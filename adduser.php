@@ -153,7 +153,7 @@
         }
 
 
-        }
+        
 
         .thumbs {
           display: inline-block;

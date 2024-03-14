@@ -89,11 +89,7 @@
           opacity: 0.5;
         }
 
-        .cover-image {
-            width:5.625rem;
-            height:5.625rem;
-            object-fit: cover;
-        }
+
 
         .intro-box {
             
@@ -106,41 +102,53 @@
         }
 
         .ftxt{
-            width: 12rem;
-            height: 2.75rem;
+
+            width: 13.438rem;
+            height: 2.375rem;
             border-radius: 5px;
-            background: #EBEBEB;
+            color: #3C3C3C;
+            background: #D9D9D9;
             margin: auto; /* Center the intro box horizontally */
-            padding: 10px; /* Add padding for better readability */
-            font-size:1.375rem;
+            padding: 5px; /* Add padding for better readability */
+            font-size:1.1875rem;
             font-weight: 700;
         }
 
+
         .ftxt-2{
-            width: 7rem;
+            width: 6.5rem;
+            height: 2.375rem;
+            border-radius: 5px;
+            background:#02DB32;
+            margin: auto; /* Center the intro box horizontally */
+            padding: 5px; /* Add padding for better readability */
+            font-size:1.1875rem;
+            font-weight: 700;
+        }
+
+        
+        .ftxt2-1{
+
+          width: 14rem;
+          height: 2.75rem;
+          border-radius: 5px;
+          color: #ACABAB;
+          background: #EAE8E8;
+          margin: auto; /* Center the intro box horizontally */
+          padding: 10px; /* Add padding for better readability */
+          font-size:1.1875rem;
+          font-weight: 700;
+          }
+
+          .ftxt2-2{
+            width: 6rem;
             height: 2.75rem;
             border-radius: 5px;
-            background: #CB89FF;
+            background:#CB89FF;
             margin: auto; /* Center the intro box horizontally */
-            padding: 10px; /* Add padding for better readability */
+            padding: 7px; /* Add padding for better readability */
             font-size:1.1875rem;
             font-weight: 800;
-        }
-
-        .mtxt{
-            width: 14rem;
-            height: 2.75rem;
-            border-radius: 5px;
-            background:#B4B0B0;
-            font-weight: 700; 
-            font-size: 1rem;
-            border-color: #004999;
-
-        }
-
-        .mtxt:hover {
-            color: #fff !important;
-
         }
         
 
@@ -153,31 +161,7 @@
         .main-content {
             text-align: center; /* Align the text center within the container */
         }
-
-
-        }
-
-        .thumbs {
-          display: inline-block;
-          margin-left: -1em;
-          margin-right: 1em;
-          color:  #fff;
-          background-color: #CB89FF;
-          font-size: 2em;
-          vertical-align: text-bottom;
-        }
-
-        .line{
-            width: 90%;
-            height: 0.25em;
-            border-radius: 5px;
-            background: #EBEBEB;
-            margin: auto; /* Center the intro box horizontally */
-            margin-top: 10px;
-            margin-bottom:10px;
-            
-        }
-
+        
         #spinner-overlay {
             position: fixed;
             top: 0;
@@ -309,8 +293,7 @@
 </div>
                         </header>
                         
-                        <div class=" mx-auto col-lg-4 col-md-7 container d-flex intro-box container mt-3 mb-3" style=" font-size:1.2rem; weight: 700; color:#676767; margin: 5px;">Your List - 
-                        </div>
+                        
                        
         </div>
 
@@ -318,11 +301,38 @@
 
         <main role="main" class="container py-4 jumbotron d-block mx-auto lead main-content">
             <!---form-->
+            <div class=" text-start mx-auto col-lg-4 col-md-7 container d-block intro-box container mt-3 " style=" font-size:1.2rem; weight: 700; color:#676767; margin: 5px;">Your List - 
+                        </div>
+
+            
         <div class="container col-lg-4 mb-5 col-md-6 col-sm-5 d-block mx-auto">
-            <form id="phoneForm"  method="post" class="form-inline py-4">
+        <form id="yourForm"  method="post" class="form-inline py-4">
                 <div class="d-flex align-items-center">
-                    <input type="tel" class="form-control ftxt text-center mr-2" id="phone-number-input" placeholder="07X XXX XXXX" name="phone" name="phoneNumber" required>
-                    <button type="button" class="btn btn-primary btn-lg btn-block ftxt-2" data-bs-toggle="modal" data-bs-target="#addUserModal">ADD</button>
+                    <div class="d-block ftxt text-center">0766113218</div>
+                    <button type="button" class="btn btn-primary btn-lg btn-block ftxt-2" data-bs-toggle="modal" data-bs-target="#addUserModal"onclick="redirectToLocation()">Track</button>
+                    <script>
+                      function redirectToLocation() {
+                        window.location.href = "location.php";
+                      }
+                    </script>
+                </div>
+                
+                
+            </form>
+
+           
+        </div>
+
+        <div class=" text-start mx-auto col-lg-4 col-md-7 container d-block intro-box container mt-3 " style=" font-size:1.2rem; weight: 700; color:#676767; margin: 5px;">Add more -
+                        </div>
+
+            
+        <div class="container col-lg-4 mb-5 col-md-6 col-sm-5 d-block mx-auto">
+        <form id="yourForm"  method="post" class="form-inline py-4">
+                          
+                <div class="d-flex align-items-center">
+                    <div class="d-block ftxt2-1 text-center">07X XXX XXXX</div>
+                    <button type="button" class="btn btn-primary btn-lg btn-block ftxt2-2" data-bs-toggle="modal" data-bs-target="#addUserModal">ADD<i class="bi bi-plus-circle-fill ps-2"></i></button>
                     <script>
                       document.getElementById('verifyFormSubmit').addEventListener('click', function (event) {
                         event.preventDefault();
@@ -332,20 +342,9 @@
                 </div>
             </form>
 
-            <p class=" text-center text-dark mt-3  pt-2 mb-4  " style="font-size:1.625rem; font-weight: 400;">
-                OR
-                            
-            </p>
-        <button type="button" class="btn btn-primary btn-lg text-dark btn-block mtxt sinhala" onclick="redirectToDashboard()">පසුව එකතු කරන්න.</button>
-
-        <script>
-          function redirectToDashboard() {
-            window.location.href = "dashboard.php";
-          }
-        </script>
-
-            <p class="text-center text-dark " style="font-size:1rem; font-weight: 400;">Add later</p>
+           
         </div>
+        
                        
      </main>
 
@@ -381,6 +380,7 @@
       </div>
       </div>
   </div>
+  
 
 
 <script>
