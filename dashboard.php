@@ -152,11 +152,8 @@
         
         .main-content {
             text-align: center; /* Align the text center within the container */
-        }
-
-
-        }
-
+        }    
+        
         .thumbs {
           display: inline-block;
           margin-left: -1em;
