@@ -303,22 +303,17 @@
             <div class=" mx-auto col-lg-4 col-md-7 container d-flex intro-box container " style=" font-size:1.2rem; weight: 700; color:#676767; margin: 5px;">Embedded Google Map -  
                         </div>
         <div class="container col-lg-4 mb-5 col-md-6 col-sm-5 d-flex mx-auto">
-            <form id="phoneForm"  method="post" class="form-group">
-                <div class="d-flex align-items-center">
-                    <iframe                          
+        <form action="adduser.php" method="post">
+        <iframe                          
                           frameborder="0" class="" style="border:0; width:349px;
                           height:302px;"
                           src="https://www.google.com/maps/embed/v1/place?key=YOUR_API_KEY
                           &q=1600+Amphitheatre+Parkway,+Mountain+View,+CA" allowfullscreen>
                     </iframe>
-                    <button type="button" class="btn btn-primary btn-lg btn-block ftxt2-2 mt-3" data-bs-toggle="modal" data-bs-target="#addUserModal">Open in Google Map</button>
-                    <script>
-                      document.getElementById('verifyFormSubmit').addEventListener('click', function (event) {
-                        event.preventDefault();
-                        document.getElementById('verifyForm').submit();
-                      });
-                    </script>
+                <div class="form-group sinhala" style="margin-top: 40px;">
+                    <input type="tel" class="form-control ftxt text-center " id="phone-authcode-input" placeholder="XXX XXX" name="authcode" name="authNumber" autocomplete="off" required>
                 </div>
+                <button type="submit" class="btn btn-primary btn-lg btn-block mt-3 mb-3">VERIFY</button>
             </form>
 
 
@@ -327,6 +322,8 @@
         </div>
                        
      </main>
+
+     
 
      <!----popup------------------->
      

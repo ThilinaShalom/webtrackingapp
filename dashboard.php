@@ -309,7 +309,7 @@
         <form id="yourForm"  method="post" class="form-inline py-4">
                 <div class="d-flex align-items-center">
                     <div class="d-block ftxt text-center">0766113218</div>
-                    <button type="button" class="btn btn-primary btn-lg btn-block ftxt-2" data-bs-toggle="modal" data-bs-target="#addUserModal"onclick="redirectToLocation()">Track</button>
+                    <button type="button" class="btn btn-primary btn-lg btn-block ftxt-2" onclick="redirectToLocation()">Track</button>
                     <script>
                       function redirectToLocation() {
                         window.location.href = "location.php";
