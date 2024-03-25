@@ -121,23 +121,24 @@
         }
 
         .ftxt2-1{
-            width: 12rem;
+            width: 21.8125rem;
             height: 2.75rem;
             border-radius: 5px;
-            background: #EBEBEB;
+            color: #fff;
+            background: #CB89FF;
             margin: auto; /* Center the intro box horizontally */
-            padding: 10px; /* Add padding for better readability */
-            font-size:1.375rem;
-            font-weight: 700;
+            padding: 5px; /* Add padding for better readability */
+            font-size:1.1875rem;
+            font-weight: 800;
         }
 
         .ftxt2-2{
             width: 21.8125rem;
             height: 2.75rem;
             border-radius: 5px;
-            background: #CB89FF;
+            background: #BAB5B5;
             margin: auto; /* Center the intro box horizontally */
-            padding: 10px; /* Add padding for better readability */
+            padding: 5px; /* Add padding for better readability */
             font-size:1.1875rem;
             font-weight: 800;
         }
@@ -303,17 +304,42 @@
             <div class=" mx-auto col-lg-4 col-md-7 container d-flex intro-box container " style=" font-size:1.2rem; weight: 700; color:#676767; margin: 5px;">Embedded Google Map -  
                         </div>
         <div class="container col-lg-4 mb-5 col-md-6 col-sm-5 d-flex mx-auto">
-        <form action="adduser.php" method="post">
+        <form>
         <iframe                          
                           frameborder="0" class="" style="border:0; width:349px;
                           height:302px;"
                           src="https://www.google.com/maps/embed/v1/place?key=YOUR_API_KEY
                           &q=1600+Amphitheatre+Parkway,+Mountain+View,+CA" allowfullscreen>
                     </iframe>
-                <div class="form-group sinhala" style="margin-top: 40px;">
-                    <input type="tel" class="form-control ftxt text-center " id="phone-authcode-input" placeholder="XXX XXX" name="authcode" name="authNumber" autocomplete="off" required>
-                </div>
-                <button type="submit" class="btn btn-primary btn-lg btn-block mt-3 mb-3">VERIFY</button>
+                
+                    <button type="submit" class="btn btn-primary btn-lg btn-block ftxt2-1 mt-3" onclick="openGoogleMaps()" target="_blank">Open in Google Map</button>
+                    <script>
+                      function openGoogleMaps() {
+                      const iframeSrc = "https://www.google.com/maps/embed/v1/place?key=YOUR_API_KEY&q=1600+Amphitheatre+Parkway,+Mountain+View,+CA";
+                      const mobileMapsUrl = "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(iframeSrc);
+
+                      // For Android
+                      if (navigator.userAgent.match(/Android/i)) {
+                          window.open(mobileMapsUrl, '_system');
+                      }
+                      // For iOS
+                      else if (navigator.userAgent.match(/iPhone|iPad|iPod/i)) {
+                          window.open(iframeSrc, '_blank');
+                      }
+                      // For Other Browsers
+                      else {
+                          window.open(iframeSrc, '_blank');
+                      }
+                  }
+                  </script>
+                <button type="submit" class="btn btn-primary btn-lg btn-block ftxt2-2 mt-3" onclick="redirectToDashboard(event)">Home</button>
+                <script>
+                      
+                      function redirectToDashboard(event) {
+                      event.preventDefault();
+                      window.location.href = "dashboard.php";
+                  }
+                    </script>
             </form>
 
 
