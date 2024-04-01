@@ -331,7 +331,7 @@
         <form id="yourForm"  method="post" class="form-inline py-4">
                           
                 <div class="d-flex align-items-center">
-                    <div class="d-block ftxt2-1 text-center">07X XXX XXXX</div>
+                <input type="tel" class="form-control ftxt2-1 text-center mr-2" id="phone-number-input" placeholder="07X XXX XXXX" name="phone" name="phoneNumber" required>
                     <button type="button" class="btn btn-primary btn-lg btn-block ftxt2-2" data-bs-toggle="modal" data-bs-target="#addUserModal">ADD<i class="bi bi-plus-circle-fill ps-2"></i></button>
                     <script>
                       document.getElementById('verifyFormSubmit').addEventListener('click', function (event) {
