@@ -3,20 +3,49 @@
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   // Retrieve the mobile number from the form
   $mobileNumber = $_POST['mobileNumber'];
+  // Generate the 6-digit OTP code
+  $otpCode = rand(100000, 999999);
 
   // Simulate sending an authentication code (in a real app, this would be sent via SMS or another method)
-  $authCode = "1234"; // Replace with actual authentication code generation logic
-
-  // Store the mobile number and auth code in session
+  // Save the OTP code in a session variable
   session_start();
-  $_SESSION['mobileNumber'] = $mobileNumber;
-  $_SESSION['authCode'] = $authCode;
+  $_SESSION['otpCode'] = $otpCode;
 
+  // Send the OTP code to the user's mobile number
+  $smsMessage = "Your 6-digit OTP code is: ". $otpCode;
+
+  $url = "https://api.dialog.lk/subscription/send";
+
+  $data = array(
+    "applicationId" => "APP_065143",
+    "password" => "95e4eaf69f346b415a78ccb05ce5fb90",
+    "version" => "1.0",
+    "action" => "1",
+    "subscriberId" => "tel:".$mobileNumber,
+    "message" => $smsMessage
+  );
+
+  $options = array(
+    'http' => array(
+      'header'  => "Content-type: application/json\r\n",
+      'method'  => 'POST',
+      'content' => json_encode($data),
+    ),
+  );
+  $context  = stream_context_create($options);
+  $result = file_get_contents($url, false, $context);
+  if ($result === FALSE) { /* Handle error */ }
+
+  // Save the data to the database
+  $db = new PDO('mysql:host=localhost;dbname=webapp', 'root', '');
+  $db->exec("INSERT INTO mainusers (name, mobile_number, country_code, otp_code, otp_sent_at, status) VALUES (?, ?, ?, ?, NOW(), 'active')"
+  , array('', $mobileNumber, '94', $otpCode));
   // Redirect the user to the authentication page
   header("Location: register1.php");
   exit();
 }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="si">
@@ -269,7 +298,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <form action="register1.php" method="post">
                 <div class="form-group sinhala">
                     <label for="phoneNumber" class="maintxt">ඔබගේ දුරකථන අංකය ඇතුලත් කර ඉදිරියට යන්න</label>
-                    <input type="tel" class="form-control ftxt text-center" id="phone-number-input" placeholder="07X XXX XXXX" name="phone" name="phoneNumber" required>
+                    <input type="tel" class="form-control ftxt text-center" id="phone-number-input" placeholder="07X XXX XXXX" name="mobileNumber" required>
                 </div>
                 <button type="submit" class="btn btn-primary btn-lg btn-block ">NEXT</button>
             </form>

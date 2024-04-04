@@ -1,3 +1,23 @@
+<?php
+session_start();  // Retrieve the OTP code and mobile number from the form
+$otpCode = $_POST['otp']; 
+$mobileNumber = $_POST['mobile'];  // Check if the OTP code and mobile number match the ones stored in the session 
+
+if ($otpCode == $_SESSION['otp'] && $_SESSION['mobile'] == $mobileNumber) {  // If they match, update the user status in the database 
+    $db = new PDO('mysql:host=localhost;dbname=webapp', 'root', ''); 
+    $stmt = $db->prepare('UPDATE mainusers SET status = :status WHERE mobile_number = :mobile_number'); 
+    $stmt->bindParam(':status', $status); 
+    $stmt->bindParam(':mobile_number', $mobileNumber); 
+    $status = 'verified'; 
+    $stmt->execute();  // Display a success message 
+    echo 'Your mobile number has been verified.'; 
+} 
+else 
+{  // If the OTP code or mobile number don't match, display an error message 
+    echo 'Invalid OTP code or mobile number.'; 
+} 
+?>
+
 <!DOCTYPE html>
 <html lang="si">
 <head>
@@ -284,5 +304,3 @@
 
 </body>
 </html>
-
-
